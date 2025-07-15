@@ -344,7 +344,7 @@ def main():
 
         logout(client1)
         check_testresult(1, USER_1 + " logout")
-        check_file(server_file, False)
+        check_file(server_file, True)
 
         logout(client2)
         check_testresult(2, USER_2 + " logout")
