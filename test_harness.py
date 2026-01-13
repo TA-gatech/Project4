@@ -144,8 +144,7 @@ def add_file(file_path, text):
 
 def start_client(client_name):
     client_directory = "./" + client_name
-    add_file("%s/documents/checkin/%s" %
-             (client_directory, DOCUMENT_NAME), DOCUMENT_TEXT)
+    add_file(f"{client_directory}/documents/checkin/{DOCUMENT_NAME}", DOCUMENT_TEXT)
 
     client = subprocess.Popen(
         ["python3", "client.py"],

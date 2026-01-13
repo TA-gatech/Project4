@@ -1,6 +1,12 @@
+''' 
+Implement the 3DS Server. You may import additional modules as required from the
+requirements.txt file provided on Github, as needed. When referencing files or 
+directories, always use relative paths - do not hard code absolute paths.
+'''
+
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
-# TODO: import additional modules as required
+# TODO: import additional modules as required from requirements.txt
 import base64
 import json
 
@@ -13,6 +19,7 @@ class welcome(Resource):
         return "Welcome to the secure shared server!"
 
 def verify_statement(statement, signed_statement, user_public_key_file):
+    # TODO: Implement verify statement functionality
 
     return False
 
@@ -34,9 +41,9 @@ class login(Resource):
         statement = data['statement']
         signed_statement = base64.b64decode(data['signed-statement'])
 
-        # complete the full path of the user public key filename
-        # /home/cs6238/Desktop/Project4/server/application/userpublickeys/{user_public_key_filename}
-        user_public_key_file = '/home/cs6238/Desktop/Project4/server/application/userpublickeys/' + user_id + '.pub'
+        # complete the relative path of the user public key filename
+        # ./userpublickeys/{user_public_key_filename}
+        user_public_key_file = './userpublickeys/' + user_id + '.pub'
 
         success = verify_statement(statement, signed_statement, user_public_key_file)
 
@@ -58,6 +65,7 @@ class login(Resource):
 
 
 class checkin(Resource):
+    # TODO: Implement checkin functionality
     """
     Expected response status codes:
     1) 200 - Document Successfully checked in
@@ -83,6 +91,7 @@ class checkin(Resource):
 
 
 class checkout(Resource):
+    # TODO: Implement checkout functionality
     """
     Expected response status codes
     1) 200 - Document Successfully checked out
@@ -112,6 +121,7 @@ class checkout(Resource):
         return jsonify(response)
 
 class grant(Resource):
+    # TODO: Implement grant functionality
     """
         Expected response status codes:
         1) 200 - Successfully granted access
@@ -138,6 +148,7 @@ class grant(Resource):
 
 
 class delete(Resource):
+    # TODO: Implement delete functionality
     """
         Expected response status codes:
         1) 200 - Successfully deleted the file
@@ -165,6 +176,7 @@ class delete(Resource):
 
 
 class logout(Resource):
+    # TODO: Implement logout functionality
     def post(self):
         """
             Expected response status codes:
