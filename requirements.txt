@@ -1,0 +1,5 @@
+cryptography
+requests
+Flask
+flask-restful
+SQLAlchemy
