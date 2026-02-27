@@ -1,13 +1,17 @@
 ''' 
-Implement the 3DS Client. You may import additional modules as required from the
-requirements.txt file provided on Github, as needed. When referencing files or 
-directories, always use relative paths - do not hard code absolute paths.
+Implement the 3DS Client. You may import additional modules as required from 
+the python standard library or requirements.txt file provided on Github, as 
+needed. 
+
+When referencing files or directories, always use relative paths - do NOT hard 
+code absolute paths.
 '''
 
 import requests
 import base64
 import json
-# TODO: import additional modules as required from requirements.txt
+# TODO: import additional modules as required from requirements.txt or 
+# python standard library
 
 logfile = 'response.log'   # DO NOT MODIFY
 server_name = 'secure-shared-store'
