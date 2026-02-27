@@ -1,18 +1,23 @@
 ''' 
-Implement the 3DS Server. You may import additional modules as required from the
-requirements.txt file provided on Github, as needed. When referencing files or 
-directories, always use relative paths - do not hard code absolute paths.
+Implement the 3DS Server. You may import additional modules as required from 
+the the Python standard libraries or requirements.txt file provided on Github, 
+as needed. 
+
+When referencing files or directories, always use relative paths - do NOT hard 
+code absolute paths.
 '''
 
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
-# TODO: import additional modules as required from requirements.txt
+# TODO: import additional modules as required from requirements.txt or python 
+# standard library
 import base64
 import json
 
 
-secure_shared_service = Flask(__name__)
-api = Api(secure_shared_service)
+secure_shared_service = Flask(__name__)     # DO NOT MODIFY
+api = Api(secure_shared_service)            # DO NOT MODIFY
+
 
 class welcome(Resource):
     def get(self):
@@ -214,8 +219,12 @@ api.add_resource(logout, '/logout')
 
 
 def main():
-    secure_shared_service.run(debug=True)
+    # You may add any server startup tasks here, such as 
+    # instantiating a database, creating tables, etc.
 
+    secure_shared_service.run(debug=True)       # DO NOT MODIFY
+
+    # You may add any server cleanup tasks here
 
 if __name__ == '__main__':
     main()
