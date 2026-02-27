@@ -13,8 +13,8 @@ import json
 # TODO: import additional modules as required from requirements.txt or 
 # python standard library
 
-logfile = 'response.log'   # DO NOT MODIFY
-server_name = 'secure-shared-store'
+logfile = 'response.log'                # DO NOT MODIFY
+server_name = 'secure-shared-store'     # DO NOT MODIFY
 
 # These need to be created manually before you start coding. Use relative paths to reference the files
 node_certificate = 'clientX.crt'
