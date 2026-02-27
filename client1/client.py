@@ -1,12 +1,18 @@
+''' 
+Implement the 3DS Client. You may import additional modules as required from the
+requirements.txt file provided on Github, as needed. When referencing files or 
+directories, always use relative paths - do not hard code absolute paths.
+'''
+
 import requests
 import base64
 import json
-# TODO: import additional modules as required
+# TODO: import additional modules as required from requirements.txt
 
-gt_username = 'gburdell3'   # TODO: Replace with your gt username within quotes
+logfile = 'response.log'   # DO NOT MODIFY
 server_name = 'secure-shared-store'
 
-# These need to be created manually before you start coding.
+# These need to be created manually before you start coding. Use relative paths to reference the files
 node_certificate = 'clientX.crt'
 node_key = 'clientX.key'
 
@@ -26,10 +32,10 @@ def post_request(server_name, action, body, node_certificate, node_key):
         data=json.dumps(body),
         headers=request_headers,
         cert=(node_certificate, node_key),
-        verify="/home/cs6238/Desktop/Project4/CA/CA.crt",
+        verify="../CA/CA.crt",
         timeout=(10, 20),
     )
-    with open(gt_username, 'wb') as f:
+    with open(logfile, 'wb') as f:
         f.write(response.content)
 
     return response
@@ -37,6 +43,8 @@ def post_request(server_name, action, body, node_certificate, node_key):
 ''' You can begin modification from here'''
 
 def sign_statement(statement, user_private_key_file):
+    # TODO: Implement sign statement functionality
+
     return b'signed statement'
 
 def login():
@@ -60,9 +68,9 @@ def login():
         # get the user private key filename or default to user1.key
         private_key_filename = (input(" Private Key Filename: ") or "user1.key")
 
-        # complete the full path of the user private key filename (depends on the client)
-        # Ex: '/home/cs6238/Desktop/Project4/client1/userkeys/' + private_key_filename
-        user_private_key_file = '/home/cs6238/Desktop/Project4/client1/userkeys/' + private_key_filename
+        # complete the relative path of the user private key filename (depends on the client)
+        # Ex: './userkeys/' + private_key_filename
+        user_private_key_file = './userkeys/' + private_key_filename
 
         # create the statement
         statement = 'statement'

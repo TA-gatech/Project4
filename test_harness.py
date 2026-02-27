@@ -5,6 +5,7 @@ import json
 
 # TODO: Configure gt_username
 GT_USERNAME = "gburdel"
+logfile = "response.log"
 
 print(f"The value of GT_USERNAME is: {GT_USERNAME}")
 
@@ -61,7 +62,7 @@ def logout(proc):
 
 
 def check_testresult(client, test, expected_status=200):
-    # This functions checks the result inside the gt_username file in the client folder
+    # This functions checks the result inside the response.log file in the client folder
     #
     # client: 1 or 2 for client 1 or client2
     # test: string description of the test, only used in the display of the result
@@ -71,16 +72,16 @@ def check_testresult(client, test, expected_status=200):
     # TODO: Increase this sleep if your tests seems to fail with EOF errors.
     time.sleep(3)
     try:
-        # Open the gt_username file and load the status
-        with open("./client%s/%s" % (str(client), GT_USERNAME), "r") as file_:
+        # Open the response.log file and load the status
+        with open("./client%s/%s" % (str(client), logfile), "r") as file_:
             result = json.loads(file_.read())
             while not "status" in result:
                 time.sleep(1)
-                with open("./client%s/%s" % (str(client), GT_USERNAME), "r") as f:
+                with open("./client%s/%s" % (str(client), logfile), "r") as f:
                     result = json.loads(file_.read())
             actual_status = result["status"]
-        # Clear the contents of the gt_username file
-        with open("./client%s/%s" % (str(client), GT_USERNAME), "w") as f:
+        # Clear the contents of the response.log file
+        with open("./client%s/%s" % (str(client), logfile), "w") as f:
             f.truncate(0)
 
         # Add some coloring and results on fail.
@@ -144,8 +145,7 @@ def add_file(file_path, text):
 
 def start_client(client_name):
     client_directory = "./" + client_name
-    add_file("%s/documents/checkin/%s" %
-             (client_directory, DOCUMENT_NAME), DOCUMENT_TEXT)
+    add_file(f"{client_directory}/documents/checkin/{DOCUMENT_NAME}", DOCUMENT_TEXT)
 
     client = subprocess.Popen(
         ["python3", "client.py"],
