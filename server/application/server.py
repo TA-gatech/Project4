@@ -9,8 +9,10 @@ code absolute paths.
 
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
-# TODO: import additional modules as required from requirements.txt or python 
-# standard library
+''' 
+TODO: import additional modules as required from requirements.txt or the 
+python standard library.
+'''
 import base64
 import json
 

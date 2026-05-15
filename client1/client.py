@@ -10,21 +10,30 @@ code absolute paths.
 import requests
 import base64
 import json
-# TODO: import additional modules as required from requirements.txt
+''' 
+TODO: import additional modules as required from requirements.txt or the 
+python standard library.
+'''
 
 logfile = 'response.log'                # DO NOT MODIFY
 server_name = 'secure-shared-store'     # DO NOT MODIFY
 
-# These need to be created manually before you start coding. Use relative paths to reference the files
+''' 
+These need to be created manually before you start coding. Use relative paths 
+to reference the files. Do not hard code client names into the filenames. The 
+names must be dynamically created based on which client is running.
+'''
 node_certificate = 'clientX.crt'
 node_key = 'clientX.key'
 
 ''' <!!! DO NOT MODIFY THIS FUNCTION !!!>'''
 def post_request(server_name, action, body, node_certificate, node_key):
     """
-        node_certificate is the name of the certificate file of the client node (present inside certs).
-        node_key is the name of the private key of the client node (present inside certs).
-        body parameter should in the json format.
+        * node_certificate is the name of the certificate file of the client 
+        node (present inside certs).
+        * node_key is the name of the private key of the client node (present 
+        inside certs).
+        * body parameter should in json format.
     """
     request_url = 'https://{}/{}'.format(server_name, action)
     request_headers = {
@@ -43,7 +52,9 @@ def post_request(server_name, action, body, node_certificate, node_key):
 
     return response
 
-''' You can begin modification from here'''
+''' 
+You can begin modification from here
+'''
 
 def sign_statement(statement, user_private_key_file):
     # TODO: Implement sign statement functionality
